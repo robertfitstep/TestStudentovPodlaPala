@@ -40,6 +40,11 @@ namespace TestStudentovPodlaPala
                 {
                     uzivOdpoved = Console.ReadLine();
                 } while (!skontrolujVstup(uzivOdpoved, o, out poleUzivIndexov));
+                o.Odpovede = new Moznost[poleUzivIndexov.Length];
+                for (int i=0; i < poleUzivIndexov.Length; i++)
+                {
+                    o.Odpovede[0] = o.Moznosti[poleUzivIndexov[i] - 1];
+                }
                 
             }
             Console.ReadLine();
