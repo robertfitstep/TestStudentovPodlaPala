@@ -9,6 +9,7 @@ namespace TestStudentovPodlaPala
     class Otazka
     {
         public string Text;
+        public int Body;
         private Moznost[] moznosti = new Moznost[3];
         public Moznost[] Moznosti
         {
@@ -49,8 +50,11 @@ namespace TestStudentovPodlaPala
     {
         public override int VyhodnotOtazku()
         {
-            if (Odpovede[0].Spravnost == true) return 1;
-            else return 0;
+            foreach(Moznost odpoved in Odpovede)
+            {
+                if (odpoved.Spravnost) return 1;
+            }
+            return 0;
         }
     }
     class MultiOtazka: Otazka
@@ -60,8 +64,10 @@ namespace TestStudentovPodlaPala
             int body=0;
             foreach (Moznost odpoved in Odpovede)
             {
-                
+                if (odpoved.Spravnost == true) body++;
+                else body--;
             }
+            return body;
         }
     }
 }
